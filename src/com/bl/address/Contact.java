@@ -27,6 +27,10 @@ public class Contact {
 	{
 		
 	}
+	public void Display()
+	{
+		System.out.println(firstname+" "+lastname+" "+address+" "+city+" "+state+" "+zip+" "+number+" "+email);
+	}
 	
 	
 	
