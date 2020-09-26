@@ -11,7 +11,7 @@ public class AddressBookMain {
 	 Scanner s2= new Scanner(System.in);
 	      public AddressBookMain() 
 	      {
-	            persons = new ArrayList<Contact>();    //Constructor
+	            persons = new ArrayList<Contact>();    
 	      }
 	      
 	      
@@ -56,9 +56,8 @@ public class AddressBookMain {
 	    	  System.out.println("Email\n");
 	    	  e=s2.nextLine();
 	    	  Contact c= new Contact(x,y,z,w,a,b,c1,e);
-	    	  System.out.println("First name "+c.firstname+"\n");
 	    	  persons.add(c);
-	    	  System.out.println("Added succesfully, the Contacts are\n");
+	    	  System.out.println("Added succesfully, the contacts are: \n");
 	    	  for (int i = 0; i < persons.size(); i++)
 	    	  { 
 	    		  persons.get(i).Display();
@@ -67,9 +66,9 @@ public class AddressBookMain {
 	      }
 	      public void edit(String name)
 	      { 
-	    	  System.out.println("\nIn the Edit Method \n");
+	    	  
 	    	  Contact c=Findname(name);
-	    	  System.out.println("Enter Choice to edit\n\n\n1.FirstName\n2.Secondname\n3.Address\n4.City\n5.State\n6.Zip\n7.Phone\n8.Email\n");
+	    	  System.out.println("Enter which detail to edit\n\n\n1.FirstName\n2.Secondname\n3.Address\n4.City\n5.State\n6.Zip\n7.Phone\n8.Email\n");
 	    	  int choice=s.nextInt();
 	    	  switch(choice)
 	    	  {
@@ -83,8 +82,6 @@ public class AddressBookMain {
 	    		  break;
 	    	  case 2:
 	    		  System.out.println("Enter last name: \n");
-	    		  //String y=s1.nextLine();
-	    		  //Contact c1=Findname(name);
 	    		  c.lastname=s1.nextLine();
 	    		  for (int i = 0; i < persons.size(); i++)
 	    		  { 
@@ -93,8 +90,6 @@ public class AddressBookMain {
 	    		  break;
 	    	  case 3:
 	    		  System.out.println("Enter new address:");
-	    		  //String y1=s1.nextLine();
-	    		  //Contact c2=Findname(name);
 	    		  c.address=s1.nextLine();
 	    		  for (int i = 0; i < persons.size(); i++)
 	    		  { 
@@ -103,8 +98,6 @@ public class AddressBookMain {
 	    		  break;
 	    	  case 4:
 	    		  System.out.println("Enter new city:");
-	    		  //String y2=s1.nextLine();
-	    		  //Contact c3=Findname(name);
 	    		  c.city=s1.nextLine();
 	    		  for (int i = 0; i < persons.size(); i++)
 	    		  { 
@@ -113,8 +106,6 @@ public class AddressBookMain {
 	    		  break;
 	    	  case 5:
 	    		  System.out.println("Enter new state:");
-	    		  //String y3=s1.nextLine();
-	    		  //Contact c4=Findname(name);
 	    		  c.state=s1.nextLine();
 	    		  for (int i = 0; i < persons.size(); i++)
 	    		  { 
@@ -123,8 +114,6 @@ public class AddressBookMain {
 	    		  break;
 	    	  case 6:
 	    		  System.out.println("Enter new zip:");
-	    		  //String y4=s1.nextLine();
-	    		  //Contact c5=Findname(name);
 	    		  c.zip=s1.nextLine();
 	    		  for (int i = 0; i < persons.size(); i++)
 	    		  { 
@@ -133,8 +122,6 @@ public class AddressBookMain {
 	    		  break;
 	    	  case 7:
 	    		  System.out.println("Enter new number:");
-	    		  //String y5=s1.nextLine();
-	    		  //Contact c6=Findname(name);
 	    		  c.number=s1.nextLine();
 	    		  for (int i = 0; i < persons.size(); i++)
 	    		  { 
@@ -143,8 +130,6 @@ public class AddressBookMain {
 	    		  break;
 	    	  case 8:
 	    		  System.out.println("Enter new email:");
-	    		  //String y6=s1.nextLine();
-	    		  //Contact c7=Findname(name);
 	    		  c.email=s1.nextLine();
 	    		  for (int i = 0; i < persons.size(); i++)
 	    		  { 
@@ -179,47 +164,7 @@ public class AddressBookMain {
 	    	  
 	      }
 	      
-	      public static void main(String[] args) {
-	    	  
-	    	  AddressBookMain a= new AddressBookMain();
-	    	  boolean f=true;
-	    	  
-	    	  while(f)
-	    	  {
-	    		
-	    	    System.out.println("\n1.Add\n2.Edit\n3.Delete\nEnter your choice : ");
-	    	    Scanner in = new Scanner(System.in);
-	    	    int ch = in.nextInt();
-	    	 
-	    	    switch(ch)
-	    	    {
-	    		  case 1:
-	    			  a.AddName();
-	    			  break;
-	    			  
-	    		  case 2:
-	    			  System.out.println("Enter name to edit");
-	    			  Scanner s1=new Scanner(System.in);
-	    			  String a1= s1.nextLine();
-	    			  a.edit(a1);
-	    			  break;
-	    			  
-	    		  case 3:
-	    		  	  System.out.println("Enter name to delete");
-	    			  Scanner s2=new Scanner(System.in);
-	    			  String a2=s2.nextLine();
-	    			  a.delete(a2);
-	    			  break;
-	    			  
-	    		  default:
-	    			  System.out.println("Terminated!");
-	    			  in.close();
-	    			  f=false;
-	    	  
-	    	    }
-	    	}  
-	    	  
-		}
+	    
 	      
 	 
 
