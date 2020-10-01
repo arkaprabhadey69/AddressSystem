@@ -3,6 +3,7 @@ import java.util.*;
 public class AddressBookMain {
     public ArrayList<Contact> persons;
     public HashMap<String,Contact> persons1;
+    public HashMap<String,Contact> persons2;
 
 
     Scanner s= new Scanner(System.in);
@@ -11,6 +12,9 @@ public class AddressBookMain {
     public AddressBookMain()
     {
         persons = new ArrayList<Contact>();
+        persons1=new HashMap<>();
+        persons2=new HashMap<>();
+    
     }
 
 
@@ -48,6 +52,20 @@ public class AddressBookMain {
         }
      
     }
+    public void FindNamebyhash(String city)
+    {
+
+        Contact d= persons1.get(city);
+        System.out.println("\n"+d.firstname+" "+d.lastname+" "+d.address+" "+d.city+" "+d.state+" "+d.email+" "+d.zip+"\n");
+     
+    }
+    public void FindNamebyHash(String state)
+    {
+
+        Contact d= persons2.get(state);
+        System.out.println("\n"+d.firstname+" "+d.lastname+" "+d.address+" "+d.city+" "+d.state+" "+d.email+" "+d.zip+"\n");
+     
+    }
     public void AddName()
     {
         String x,y,z,w,a,b,e;
@@ -82,6 +100,8 @@ public class AddressBookMain {
         e=s2.nextLine();
         Contact c= new Contact(x,y,z,w,a,b,c1,e);
         persons.add(c);
+        persons1.put(w, c);
+        persons2.put(a, c);
         System.out.println("Added succesfully, the contacts are: \n");
         for (int i = 0; i < persons.size(); i++)
         {

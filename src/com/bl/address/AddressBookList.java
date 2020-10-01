@@ -114,14 +114,13 @@ public class AddressBookList {
 
             }
         }
-        System.out.println(count);
+        System.out.println("Total number of people in this state: "+count);
     }
     public void CountByCity(String city)
     {
         int count1=0;
         for(Map.Entry<String, AddressBookMain> entry: addrbooklist.entrySet())
         {
-            //AddressBookMain a1=entry.getValue();
 
             for(int i=0;i<(entry.getValue()).persons.size();i++)
             {
@@ -134,7 +133,31 @@ public class AddressBookList {
 
             }
         }
-        System.out.println(count1);
+        System.out.println("Total number of people in this city: "+count1);
+    }
+    public void GetDetailsByHash(String city)
+    {
+    	 for(Map.Entry<String, AddressBookMain> entry: addrbooklist.entrySet())
+         {
+             AddressBookMain a1=entry.getValue();
+             System.out.println("Address book: "+ entry.getKey());
+
+            
+              a1.FindNamebyhash(city);
+         }
+    	
+    }
+    public void GetPersonDetailsByHash(String state)
+    {
+    	 for(Map.Entry<String, AddressBookMain> entry: addrbooklist.entrySet())
+         {
+             AddressBookMain a1=entry.getValue();
+             System.out.println("Address book: "+ entry.getKey());
+
+            
+              a1.FindNamebyHash(state);;
+         }
+    	
     }
     public static void main(String[] args)
     {
@@ -144,7 +167,7 @@ public class AddressBookList {
         boolean m=true;
         while(m)
         {
-            System.out.println("1.Enter new address book\n2.Exit\n3.SearchByCity\n4.SearchByState\n5.CountByState\n6.CountByCity");
+            System.out.println("1.Enter new address book\n2.Exit\n3.SearchByCity\n4.SearchByState\n5.CountByState\n6.CountByCity\n7.GetDeatilsbyHashCity\n8.GetDeatilsbyHashState");
             Scanner s7=new Scanner(System.in);
             int choice=s7.nextInt();
             switch(choice)
@@ -184,6 +207,16 @@ public class AddressBookList {
                 	 System.out.println("Enter city name: ");
                 	 String state2= s6.nextLine();
                      adr.CountByCity(state2);
+                     break;
+                case 7:
+                	 System.out.println("Enter city name: ");
+                	 String state3= s6.nextLine();
+                     adr.GetDetailsByHash(state3);
+                     break;
+                case 8:
+                	System.out.println("Enter state name: ");
+                	 String state4= s6.nextLine();
+                     adr.GetPersonDetailsByHash(state4);
                      break;
 
 
