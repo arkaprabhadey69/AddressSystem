@@ -2,8 +2,8 @@ package com.bl.address;
 import java.util.*;
 public class AddressBookMain {
     public ArrayList<Contact> persons;
-    public HashMap<String,Contact> persons1;
-    public HashMap<String,Contact> persons2;
+    public HashMap<String, ArrayList<Contact>> StatePersonMap;
+    public HashMap<String, ArrayList<Contact>> CityPersonMap;
 
 
     Scanner s= new Scanner(System.in);
@@ -12,8 +12,8 @@ public class AddressBookMain {
     public AddressBookMain()
     {
         persons = new ArrayList<Contact>();
-        persons1=new HashMap<>();
-        persons2=new HashMap<>();
+        StatePersonMap = new HashMap<String,ArrayList<Contact>>();
+	    CityPersonMap = new HashMap<String,ArrayList<Contact>>();
     
     }
 
@@ -52,19 +52,28 @@ public class AddressBookMain {
         }
      
     }
-    public void FindNamebyhash(String city)
+  
+    public void FindPersonByHash(String city)
     {
-
-        Contact d= persons1.get(city);
-        System.out.println("\n"+d.firstname+" "+d.lastname+" "+d.address+" "+d.city+" "+d.state+" "+d.email+" "+d.zip+"\n");
-     
+    	 ArrayList<Contact> person1 = new ArrayList<Contact>();
+		 person1 = CityPersonMap.get(city);
+		 for(int i=0;i<person1.size();i++){
+			 System.out.println("Firstname "+person1.get(i).firstname+" Lastname "+person1.get(i).lastname+
+    	    			" Address "+person1.get(i).address+" City "+person1.get(i).city+" State "+person1.get(i).state+
+    	    			" Zip "+person1.get(i).zip+" Phone number "+person1.get(i).number+" Email "+person1.get(i).email+"\n");
+		 }
+	     
     }
-    public void FindNamebyHash(String state)
+    public void FindPersonByHashState(String state)
     {
-
-        Contact d= persons2.get(state);
-        System.out.println("\n"+d.firstname+" "+d.lastname+" "+d.address+" "+d.city+" "+d.state+" "+d.email+" "+d.zip+"\n");
-     
+    	 ArrayList<Contact> person1 = new ArrayList<Contact>();
+		 person1 = StatePersonMap.get(state);
+		 for(int i=0;i<person1.size();i++){
+			 System.out.println("Firstname "+person1.get(i).firstname+" Lastname "+person1.get(i).lastname+
+    	    			" Address "+person1.get(i).address+" City "+person1.get(i).city+" State "+person1.get(i).state+
+    	    			" Zip "+person1.get(i).zip+" Phone number "+person1.get(i).number+" Email "+person1.get(i).email+"\n");
+		 }
+	     
     }
     public void AddName()
     {
@@ -100,8 +109,13 @@ public class AddressBookMain {
         e=s2.nextLine();
         Contact c= new Contact(x,y,z,w,a,b,c1,e);
         persons.add(c);
-        persons1.put(w, c);
-        persons2.put(a, c);
+        if(!StatePersonMap.containsKey(a))
+   	    	StatePersonMap.put(a, new ArrayList<Contact>());
+   	     StatePersonMap.get(a).add(c);
+   	     
+   	     if(!CityPersonMap.containsKey(w))
+ 	    	CityPersonMap.put(w, new ArrayList<Contact>());
+ 	     CityPersonMap.get(w).add(c);
         System.out.println("Added succesfully, the contacts are: \n");
         for (int i = 0; i < persons.size(); i++)
         {

@@ -135,27 +135,23 @@ public class AddressBookList {
         }
         System.out.println("Total number of people in this city: "+count1);
     }
-    public void GetDetailsByHash(String city)
-    {
-    	 for(Map.Entry<String, AddressBookMain> entry: addrbooklist.entrySet())
-         {
-             AddressBookMain a1=entry.getValue();
-             System.out.println("Address book: "+ entry.getKey());
-
-            
-              a1.FindNamebyhash(city);
-         }
-    	
-    }
+   
+    public void SearchContactByHash(String city){
+   	 for(Map.Entry<String, AddressBookMain> entry: addrbooklist.entrySet())
+        {
+            AddressBookMain addBook=entry.getValue();
+            System.out.println("Address Book : "+entry.getKey());
+            addBook.FindPersonByHash(city);
+        }
+   	
+   }
     public void GetPersonDetailsByHash(String state)
     {
     	 for(Map.Entry<String, AddressBookMain> entry: addrbooklist.entrySet())
          {
-             AddressBookMain a1=entry.getValue();
-             System.out.println("Address book: "+ entry.getKey());
-
-            
-              a1.FindNamebyHash(state);;
+             AddressBookMain addBook=entry.getValue();
+             System.out.println("Address Book : "+entry.getKey());
+             addBook.FindPersonByHashState(state);
          }
     	
     }
@@ -211,13 +207,14 @@ public class AddressBookList {
                 case 7:
                 	 System.out.println("Enter city name: ");
                 	 String state3= s6.nextLine();
-                     adr.GetDetailsByHash(state3);
+                     adr.SearchContactByHash(state3);
                      break;
                 case 8:
                 	System.out.println("Enter state name: ");
                 	 String state4= s6.nextLine();
                      adr.GetPersonDetailsByHash(state4);
                      break;
+              
 
 
             }
